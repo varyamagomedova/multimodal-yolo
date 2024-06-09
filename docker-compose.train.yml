@@ -1,0 +1,23 @@
+version: "3.8"
+
+services:
+  yolov7:
+    build: .
+    volumes:
+      - ./data:/data
+      - ./yolov7/runs:/yolov7/runs # Монтирование локальной папки для сохранения результатов
+    environment:
+      - PYTHONUNBUFFERED=1
+    command:
+      [
+        "train.py",
+        "--data",
+        "/data/dataset/data.yaml",
+        "--weights",
+        "yolov7.pt",
+        "--cfg",
+        "cfg/training/yolov7.yaml",
+        "--epochs",
+        "100",
+      ]
+    shm_size: "24gb"

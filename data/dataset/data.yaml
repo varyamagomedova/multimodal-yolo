@@ -1,0 +1,5 @@
+train: /data/dataset/images/train
+val: /data/dataset/images/val
+
+nc: 4 # Замените на количество классов
+names: ["Batterie", "Spritze", "Tasse", "Vase"] # Замените на имена ваших классов

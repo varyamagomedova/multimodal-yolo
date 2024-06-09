@@ -1,0 +1,29 @@
+version: "3.8"
+
+services:
+  yolov7:
+    build: .
+    volumes:
+      - ./data:/data
+      - ./yolov7/runs:/yolov7/runs
+    environment:
+      - PYTHONUNBUFFERED=1
+    command:
+      [
+        "detect.py",
+        "--source",
+  #     "/data/images", # Путь к вашему видео файлу или папке с изображениями
+        "/data/video", # Путь к вашему видео файлу или папке с изображениями
+        "--weights",
+        "/yolov7/runs/train/exp/weights/last.pt", # Путь к вашей переобученной модели
+        "--conf",
+        "0.15",  # Порог уверенности для обнаружения объектов
+  #     "--img-size",
+  #     "640",
+        "--save-txt", # Сохранить результаты в формате .txt
+        "--project", 
+        "/data/results", # Путь к папке для сохранения результатов
+        "--name", 
+        "output" # Имя фала для сохранения результатов
+      ]
+    shm_size: "24gb"
