@@ -1,3 +1,5 @@
 *.jpeg
 *.txt
 yolov7/*
+.DS_Store
+*/.DS_Store
