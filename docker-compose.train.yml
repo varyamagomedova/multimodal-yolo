@@ -14,10 +14,14 @@ services:
         "--data",
         "/data/dataset/data.yaml",
         "--weights",
-        "yolov7.pt",
+        "/yolov7/runs/train/exp5/weights/best.pt",
         "--cfg",
         "cfg/training/yolov7.yaml",
         "--epochs",
         "100",
+        "--img-size",
+        "960",
+        "--batch-size",
+        "16",
       ]
-    shm_size: "24gb"
+    shm_size: "48gb"
