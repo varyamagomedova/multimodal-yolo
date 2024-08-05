@@ -3,3 +3,4 @@
 *.txt
 yolov7/*
 .DS_Store
+*.cache
