@@ -1,0 +1,6 @@
+docker compose -f docker-compose.train.yml build                                               
+docker compose -f docker-compose.train.yml up
+
+docker compose -f docker-compose.detect.yml build
+docker compose -f docker-compose.detect.yml up
+
