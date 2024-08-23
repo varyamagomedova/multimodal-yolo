@@ -1,29 +1,28 @@
-# Базовый образ Python с поддержкой ARM
+# Base Python image
 FROM python:3.9-slim
 
-# Установка зависимостей
+# installing the dependancies 
 RUN apt-get update && apt-get install -y \
     git \
     gcc \
     python3-dev \
     && rm -rf /var/lib/apt/lists/*
 
-# Клонирование репозитория YOLOv7
+# clone the yolov7 repository
 RUN git clone https://github.com/WongKinYiu/yolov7.git /yolov7
 
-# Установка Python-зависимостей
+# intall Python dependancies
 WORKDIR /yolov7
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Установка PyTorch и других библиотек для ARM (M1)
+# install PyTorch
 RUN pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 RUN pip install --no-cache-dir opencv-python-headless
 
-# Указание рабочей директории
+# working directory
 WORKDIR /yolov7
 
-# Копирование файлов проекта в контейнер
+# copy the current directory contents into the container at /yolov7
 COPY . .
 
-# Указание точки входа
 ENTRYPOINT ["python"]

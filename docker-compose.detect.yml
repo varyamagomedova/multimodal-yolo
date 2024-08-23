@@ -12,18 +12,19 @@ services:
       [
         "detect.py",
         "--source",
-        "/data/images", # Путь к вашему видео файлу или папке с изображениями
-        #"/data/video", # Путь к вашему видео файлу или папке с изображениями
+        "/data/images", # path to your folder with images
+        #"/data/video", # you can regognize objects in video files with this model too
         "--weights",
-        "/yolov7/runs/train/exp6/weights/last.pt", # Путь к вашей переобученной модели
+        "/yolov7/runs/train/exp6/weights/last.pt", # path to your weights file
         "--conf",
-        "0.30",  # Порог уверенности для обнаружения объектов
+        "0.30",  # confidence threshold (default is 0.25)
   #     "--img-size",
   #     "640",
-        "--save-txt", # Сохранить результаты в формате .txt
+        "--save-txt", # save results to .txt - these will be your yolo coordinates files
         "--project", 
-        "/data/results", # Путь к папке для сохранения результатов
+        "/data/results", # path to your folder for saving results
         "--name", 
-        "output" # Имя фала для сохранения результатов
+        "output" # name of the output folder
       ]
+      # memory limit that you can set for the container
     shm_size: "24gb"

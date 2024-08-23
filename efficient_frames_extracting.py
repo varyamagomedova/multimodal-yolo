@@ -1,3 +1,6 @@
+# this code extracts frames from videos of a matcher by numbers from the .csv file with corrected target frames
+# later we will use them for object recognition
+
 import cv2
 import pandas as pd
 from concurrent.futures import ThreadPoolExecutor
@@ -25,7 +28,7 @@ def extract_frames(video_path, video_frames):
 
     cap.release()
 
-# Read the CSV file
+# Read the CSV file with corrected frame numbers (at least 5 April tags)
 frames = pd.read_csv('/Users/varya/Desktop/Julia/frame_numbers_corrected_with_tokens.csv')
 set_session = frames.groupby('video_path')
 

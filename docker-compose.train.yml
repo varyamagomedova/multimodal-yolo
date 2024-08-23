@@ -5,7 +5,7 @@ services:
     build: .
     volumes:
       - ./data:/data
-      - ./yolov7/runs:/yolov7/runs # Монтирование локальной папки для сохранения результатов
+      - ./yolov7/runs:/yolov7/runs # path to your folder with weights and other results
     environment:
       - PYTHONUNBUFFERED=1
     command:
@@ -23,5 +23,6 @@ services:
         "960",
         "--batch-size",
         "16",
-      ]
+      ] 
+      # memory limit that you can set for the container
     shm_size: "48gb"
