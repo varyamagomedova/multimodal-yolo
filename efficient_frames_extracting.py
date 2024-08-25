@@ -23,7 +23,7 @@ def extract_frames(video_path, video_frames):
         if not ret:
             break  # Break if the frame can't be read
         #the frames will be saved in the folder 'frames_to_recognize' in the root folder
-        frame_filename = f'frames_to_recognize/set{participant}_session{session}_frame_{frame_number}.jpg'
+        frame_filename = f'/data/images/set{participant}_session{session}_frame_{frame_number}.jpg'
         cv2.imwrite(frame_filename, frame)
         print(f'Saved {frame_filename}')
 
@@ -31,7 +31,7 @@ def extract_frames(video_path, video_frames):
 
 # Read the CSV file with corrected frame numbers (at least 5 April tags)
 #path to you root folder (as in Julia pipeline)
-frames = pd.read_csv('/Users/varya/Desktop/Julia/frame_numbers_corrected_with_tokens.csv')
+frames = pd.read_csv('/Users/varya/Desktop/Julia/DGAME data/frame_numbers_corrected_with_tokens.csv')
 set_session = frames.groupby('video_path')
 
 # Use ThreadPoolExecutor to process videos in parallel

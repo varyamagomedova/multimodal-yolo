@@ -19,11 +19,12 @@ When you have this file ready, put the path to it into the "efficient_frames_ext
 ```python
 frames = pd.read_csv('PATH TO YOUR ROOT FOLDER')
 ```
-This script will extract the frames from the videos, the frames will be saved in the folder 'frames_to_recognize' in the root folder of this module (not in the main pipeline module). Make sure your "docker-compose.detect.yml" file has the correct path to these frames.
+This script will extract the frames from the videos, the frames will be saved in the folder '/data/images' in the root folder of this module (not in the main pipeline module). Make sure your "docker-compose.detect.yml" file has the correct path to these frames (it is by default).
 
 ## Run the object recognition
- Then you will recognize object positions on these frames using YOLO computer vision model. 
- to start detection, run the following two commands in the Terminal:
+ Then you will recognize object positions on these frames using YOLO computer vision model. Check if the "docker-compose.detect.yml" has the right path to the weights for the model and the right path to your folder with the frames.
+
+ To start detection, run the following two commands in the Terminal:
 
  ```bash
  docker compose -f docker-compose.detect.yml build
@@ -34,4 +35,4 @@ The commande are also saved in the "commands" file - the first pair is to train 
  This will create te folder 'labels' for you, with text files having pixel object coordinates for all objects for all frames. You will need then to put the path to thos folder into the 'main.jl' file of the main pipeline.
 
 Detailed explanations in this video walkthrough:
-
+https://youtu.be/bWNy26O7Sow
